@@ -71,7 +71,7 @@
       "id": "CHUM002",
       "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
       "name": "METODOLOGÍA DE LA INVESTIGACIÓN",
-      "components": "2/0/4",
+      "components": "1/1/4",
       "sum": 6,
       "level": "L100-1",
       "code": "CHUM002"
@@ -480,21 +480,29 @@
       "col": 4,
       "id": "IT&I",
       "tipoMateria": "ITINERARIO",
-      "name": "ITINERARIO 1",
+      "name": "ITINERARIO 1: ESTUDIOS ESTRATÉGICOS",
       "components": "2/2/2",
       "sum": 6,
       "level": "L400-1",
-      "code": "IT&I"
+      "code": "IT&I",
+      "courseOptions": [
+        "SEGURIDAD GLOBAL",
+        "POLÍTICA DE DEFENSA"
+      ]
     },
     {
       "col": 5,
       "id": "IT&II",
       "tipoMateria": "ITINERARIO",
-      "name": "ITINERARIO 2",
+      "name": "ITINERARIO 1: NEGOCIACIÓN Y SEGURIDAD",
       "components": "2/2/2",
       "sum": 6,
       "level": "L400-1",
-      "code": "IT&II"
+      "code": "IT&II",
+      "courseOptions": [
+        "DIPLOMACIA Y PARADIPLOMACIA",
+        "NEGOCIACIÓN Y RESOLUCIÓN DE CONFLICTOS"
+      ]
     },
     {
       "col": 0,
@@ -530,21 +538,29 @@
       "col": 3,
       "id": "IT&III",
       "tipoMateria": "ITINERARIO",
-      "name": "ITINERARIO 3",
+      "name": "ITINERARIO 2: ESTUDIOS ESTRATÉGICOS",
       "components": "2/2/2",
       "sum": 6,
       "level": "L400-2",
-      "code": "IT&III"
+      "code": "IT&III",
+      "courseOptions": [
+        "SEGURIDAD Y DEFENSA DEL ECUADOR",
+        "INTELIGENCIA Y PROSPECTIVA"
+      ]
     },
     {
       "col": 4,
       "id": "IT&IV",
       "tipoMateria": "ITINERARIO",
-      "name": "ITINERARIO 4",
+      "name": "ITINERARIO 2: NEGOCIACIÓN Y SEGURIDAD",
       "components": "2/2/2",
       "sum": 6,
       "level": "L400-2",
-      "code": "IT&IV"
+      "code": "IT&IV",
+      "courseOptions": [
+        "OPERACIONES DE PAZ",
+        "AMBIENTE, ENERGÍA Y RECURSOS"
+      ]
     },
     {
       "col": 5,
@@ -637,6 +653,38 @@
     {
       "from": "SEGD020",
       "to": "SEGD034"
+    },
+    {
+      "from": "SEGD009",
+      "to": "SEGD025"
+    },
+    {
+      "from": "CHUM002",
+      "to": "SEGD027"
+    },
+    {
+      "from": "SEGD004",
+      "to": "SEGD027"
+    },
+    {
+      "from": "SEGD020",
+      "to": "SEGD030"
+    },
+    {
+      "from": "SEGD010",
+      "to": "SEGD032"
+    },
+    {
+      "from": "ANÁLISIS DE TEXTOS EN RELACIONES INTERNACIONALES",
+      "to": "SEGD031"
+    },
+    {
+      "from": "IT&I",
+      "to": "IT&III"
+    },
+    {
+      "from": "IT&II",
+      "to": "IT&IV"
     }
   ]
 }
