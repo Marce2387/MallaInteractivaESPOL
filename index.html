@@ -1485,6 +1485,12 @@
       }
     }
 
+    async function fetchFreshBase(url) {
+      const freshUrl = new URL(url, window.location.href);
+      freshUrl.searchParams.set('_revision', Date.now().toString());
+      return fetch(freshUrl.href, { cache: 'no-store' });
+    }
+
     async function loadBaseCareerCodes(careerName) {
         baseSubjectCodes = [];
         if (!catalogoGlobal || !careerName) { 
@@ -1500,7 +1506,7 @@
         
         if (baseRuta) {
             try {
-                const resp = await fetch(baseRuta);
+                const resp = await fetchFreshBase(baseRuta);
                 if (resp.ok) {
                     const baseData = await resp.json();
                     baseSubjectCodes = (baseData.subjects || []).map(s => s.code.toUpperCase());
@@ -1557,8 +1563,8 @@
 
     function changeBaseCareerFromSubmenu(careerName, event) {
       if (event) { event.preventDefault(); event.stopPropagation(); }
-      state.baseCareer = careerName; persistState(); updateSubtitleUI(); closeAllDropdowns(); loadBaseCareerCodes(careerName);
-      showToast(`Malla base actualizada a: ${careerName}`, 'success');
+      const career = catalogoGlobal?.facultades.flatMap(f => f.carreras).find(c => c.nombre === careerName);
+      if (career) fetchAndLoadJSON(career.ruta, careerName);
     }
 
     function updateSubtitleUI() {
@@ -3307,7 +3313,7 @@
           renderBoard(); 
           setTimeout(() => { drawConnections(); updateAnalyticsPanel(); }, 200); 
       }
-      showToast('Malla cargada con éxito.', 'success');
+      showToast(`Malla cargada: ${state.subjects.length} asignaturas y ${state.connections.length} conexiones.`, 'success');
     }
 
     function triggerImportJSON() { closeAllDropdowns(); document.getElementById('import-file-input').click(); }
@@ -3320,7 +3326,7 @@
 
     async function fetchAndLoadJSON(url, careerName) {
       closeAllDropdowns();
-      try { const response = await fetch(url); if (!response.ok) throw new Error('Archivo no encontrado (' + response.status + ')'); const importedData = await response.json(); importedData.baseCareer = careerName; loadDataIntoBoard(importedData); } 
+      try { const response = await fetchFreshBase(url); if (!response.ok) throw new Error('Archivo no encontrado (' + response.status + ')'); const importedData = await response.json(); importedData.baseCareer = careerName; loadDataIntoBoard(importedData); } 
       catch (err) { showToast('Error al cargar la carrera. Verifica el archivo en GitHub.', 'error'); console.error(err); }
     }
 
@@ -3423,7 +3429,7 @@
         let originalData = { subjects: [], connections: [] };
         if (catalogoGlobal && state.baseCareer) {
           let baseRuta = null; catalogoGlobal.facultades.forEach(f => f.carreras.forEach(c => { if(c.nombre === state.baseCareer) baseRuta = c.ruta; }));
-          if (baseRuta) { const respBase = await fetch(baseRuta); if (respBase.ok) originalData = await respBase.json(); }
+          if (baseRuta) { const respBase = await fetchFreshBase(baseRuta); if (respBase.ok) originalData = await respBase.json(); }
         }
 
         const getConns = (subjs, conns, id) => conns.filter(c => c.to === id).map(c => {
