@@ -1,0 +1,652 @@
+{
+  "baseCareer": "Relaciones Internacionales",
+  "config": {
+    "semesters": 8,
+    "minC": 14,
+    "maxC": 16,
+    "divC": 3,
+    "weeks": 16
+  },
+  "levels": [
+    {
+      "id": "L100-1",
+      "name": "NIVEL 100 - I"
+    },
+    {
+      "id": "L100-2",
+      "name": "NIVEL 100 - II"
+    },
+    {
+      "id": "L200-1",
+      "name": "NIVEL 200 - I"
+    },
+    {
+      "id": "L200-2",
+      "name": "NIVEL 200 - II"
+    },
+    {
+      "id": "L300-1",
+      "name": "NIVEL 300 - I"
+    },
+    {
+      "id": "L300-2",
+      "name": "NIVEL 300 - II"
+    },
+    {
+      "id": "L400-1",
+      "name": "NIVEL 400 - I"
+    },
+    {
+      "id": "L400-2",
+      "name": "NIVEL 400 - II"
+    },
+    {
+      "id": "L500-1",
+      "name": "NIVEL 500 - I"
+    }
+  ],
+  "subjects": [
+    {
+      "col": 0,
+      "id": "CHUM001",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "INTRODUCCIÓN AL DERECHO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L100-1",
+      "code": "CHUM001"
+    },
+    {
+      "col": 1,
+      "id": "SEGD001",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "GEOGRAFÍA FÍSICA, POLÍTICA Y ECONOMICA",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-1",
+      "code": "SEGD001"
+    },
+    {
+      "col": 4,
+      "id": "CHUM002",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "METODOLOGÍA DE LA INVESTIGACIÓN",
+      "components": "2/0/4",
+      "sum": 6,
+      "level": "L100-1",
+      "code": "CHUM002"
+    },
+    {
+      "col": 2,
+      "id": "SEGD002",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "HISTORIA DE LAS RELACIONES INTERNACIONALES",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-1",
+      "code": "SEGD002"
+    },
+    {
+      "col": 3,
+      "id": "SEGD003",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "PENSAMIENTO POLÍTICO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L100-1",
+      "code": "SEGD003"
+    },
+    {
+      "col": 5,
+      "id": "CHUM003",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "TEORÍA SOCIAL",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-1",
+      "code": "CHUM003"
+    },
+    {
+      "col": 0,
+      "id": "CHUM004",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "BASES DEL DERECHO CONSTITUCIONAL",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L100-2",
+      "code": "CHUM004"
+    },
+    {
+      "col": 1,
+      "id": "SEGD004",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "ESTADÍSTICA APLICADA A LAS RELACIONES INTERNACIONALES",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-2",
+      "code": "SEGD004"
+    },
+    {
+      "col": 2,
+      "id": "SEGD005",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "TEORÍA DE LAS RELACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L100-2",
+      "code": "SEGD005"
+    },
+    {
+      "col": 3,
+      "id": "SEGD006",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "CIENCIA POLÍTICA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L100-2",
+      "code": "SEGD006"
+    },
+    {
+      "col": 4,
+      "id": "ANÁLISIS DE TEXTOS EN RELACIONES INTERNACIONALES",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "ANÁLISIS DE TEXTOS EN RELACIONES INTERNACIONALES",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-2",
+      "code": "SEGD007"
+    },
+    {
+      "col": 5,
+      "id": "SEGD008",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "HISTORIA DEL ECUADOR",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L100-2",
+      "code": "SEGD008"
+    },
+    {
+      "col": 0,
+      "id": "SEGD009",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "DERECHO INTERNACIONAL",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-1",
+      "code": "SEGD009"
+    },
+    {
+      "col": 1,
+      "id": "CEAC001",
+      "tipoMateria": "EDUCACIÓN GENERAL",
+      "name": "MICROECONOMÍA",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-1",
+      "code": "CEAC001"
+    },
+    {
+      "col": 2,
+      "id": "SEGD010",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "TEORÍAS DE LA SEGURIDAD INTERNACIONAL",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-1",
+      "code": "SEGD010"
+    },
+    {
+      "col": 3,
+      "id": "SEGD011",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "TEORÍAS Y MODELOS DE DESARROLLO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-1",
+      "code": "SEGD011"
+    },
+    {
+      "col": 4,
+      "id": "SEGD012",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "GOBIERNO Y ADMINISTRACIÓN PÚBLICA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-1",
+      "code": "SEGD012"
+    },
+    {
+      "col": 5,
+      "id": "SEGD013",
+      "tipoMateria": "MATEMÁTICAS Y CIENCIAS BÁSICAS",
+      "name": "INGLÉS PARA LAS RELACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-1",
+      "code": "SEGD013"
+    },
+    {
+      "col": 0,
+      "id": "SEGD014",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "ANÁLISIS DE POLÍTICA EXTERIOR",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-2",
+      "code": "SEGD014"
+    },
+    {
+      "col": 1,
+      "id": "CEAC002",
+      "tipoMateria": "EDUCACIÓN GENERAL",
+      "name": "MACROECONOMÍA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-2",
+      "code": "CEAC002"
+    },
+    {
+      "col": 2,
+      "id": "SEGD15",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "POLÍTICA INTERNACIONAL DE ESTADOS Y MERCADOS",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-2",
+      "code": "SEGD15"
+    },
+    {
+      "col": 3,
+      "id": "SEGD016",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "POLÍTICAS PÚBLICAS",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L200-2",
+      "code": "SEGD016"
+    },
+    {
+      "col": 4,
+      "id": "SEGD17",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "INGLÉS PARA LAS RELACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-2",
+      "code": "SEGD17"
+    },
+    {
+      "col": 5,
+      "id": "SEGD18",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "RELACIONES INTERNACIONALES Y TECNOLOGÍAS EMERGENTES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L200-2",
+      "code": "SEGD18"
+    },
+    {
+      "col": 0,
+      "id": "SEGD019",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "POLÍTICA EXTERIOR DEL ECUADOR",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "SEGD019"
+    },
+    {
+      "col": 1,
+      "id": "SEGD020",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "GLOBALIZACIÓN Y NUEVO ORDEN MUNDIAL",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "SEGD020"
+    },
+    {
+      "col": 2,
+      "id": "SEGD021",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "DERECHOS HUMANOS",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "SEGD021"
+    },
+    {
+      "col": 3,
+      "id": "CEAC003",
+      "tipoMateria": "EDUCACIÓN GENERAL",
+      "name": "DISEÑO Y EVALUACIÓN DE PROYECTOS",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "CEAC003"
+    },
+    {
+      "col": 4,
+      "id": "SEGD022",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "REALIDAD NACIONAL Y GEOPOLÍTICA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "SEGD022"
+    },
+    {
+      "col": 5,
+      "id": "SEGD2023",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "RELACIONES INTERNACIONALES CONTEMPORANEAS",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L300-1",
+      "code": "SEGD2023"
+    },
+    {
+      "col": 6,
+      "id": "PRACT&COM",
+      "tipoMateria": "PRÁCTICAS COMUNITARIAS",
+      "name": "PRÁCTICAS DE SERVICIO COMUNITARIO",
+      "components": "0/0/6",
+      "sum": 6,
+      "level": "L300-1",
+      "code": "PRACT&COM"
+    },
+    {
+      "col": 0,
+      "id": "SEGD0024",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "DERECHO INTERNACIONAL HUMANITARIO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-2",
+      "code": "SEGD024"
+    },
+    {
+      "col": 1,
+      "id": "SEGD025",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "ORGANIZACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-2",
+      "code": "SEGD025"
+    },
+    {
+      "col": 2,
+      "id": "SEGD026",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "COOPERACIÓN INTERNACIONAL",
+      "components": "3/3/3",
+      "sum": 9,
+      "level": "L300-2",
+      "code": "SEGD026"
+    },
+    {
+      "col": 3,
+      "id": "SEGD027",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "MÉTODOS CUANTITATIVOS EN RELACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-2",
+      "code": "SEGD027"
+    },
+    {
+      "col": 4,
+      "id": "CEAC004",
+      "tipoMateria": "EDUCACIÓN GENERAL",
+      "name": "COMERCIO INTERNACIONAL",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-2",
+      "code": "CEAC004"
+    },
+    {
+      "col": 5,
+      "id": "SEGD028",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "LIDERAZGO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L300-2",
+      "code": "SEGD028"
+    },
+    {
+      "id": "PRACT&EMP&I",
+      "code": "PRACT&EMP&I",
+      "name": "PRÁCTICAS LABORALES 1",
+      "components": "0/0/6",
+      "sum": 6,
+      "level": "L300-2",
+      "col": 6,
+      "tipoMateria": "PRÁCTICAS LABORALES"
+    },
+    {
+      "id": "PRACT&EMP&II",
+      "code": "PRACT&EMP&II",
+      "name": "PRÁCTICAS LABORALES 2",
+      "components": "0/0/9",
+      "sum": 9,
+      "level": "L400-1",
+      "col": 6,
+      "tipoMateria": "PRÁCTICAS LABORALES"
+    },
+    {
+      "col": 0,
+      "id": "SEGD029",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "ESTUDIOS DE PAZ Y CONFLICTO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "SEGD029"
+    },
+    {
+      "col": 1,
+      "id": "SEGD030",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "REGIONALISMO Y ESTUDIOS DE ÁREA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "SEGD030"
+    },
+    {
+      "col": 2,
+      "id": "SEGD031",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "MÉTODOS CUALITATIVOS DE RELACIONES INTERNACIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "SEGD031"
+    },
+    {
+      "col": 3,
+      "id": "SEGD032",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "ANÁLISIS DE PROCESOS MIGRATORIOS",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "SEGD032"
+    },
+    {
+      "col": 4,
+      "id": "IT&I",
+      "tipoMateria": "ITINERARIO",
+      "name": "ITINERARIO 1",
+      "components": "3/0/3",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "IT&I"
+    },
+    {
+      "col": 5,
+      "id": "IT&II",
+      "tipoMateria": "ITINERARIO",
+      "name": "ITINERARIO 2",
+      "components": "3/0/3",
+      "sum": 6,
+      "level": "L400-1",
+      "code": "IT&II"
+    },
+    {
+      "col": 0,
+      "id": "SEGD033",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "DESARME Y AMENAZAS NO CONVENCIONALES",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-2",
+      "code": "SEGD033"
+    },
+    {
+      "col": 1,
+      "id": "SEGD034",
+      "tipoMateria": "FORMACIÓN PROFESIONAL",
+      "name": "GEOPOLÍTICA CONTEMPORANEA",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-2",
+      "code": "SEGD034"
+    },
+    {
+      "col": 2,
+      "id": "CEAC005",
+      "tipoMateria": "EDUCACIÓN GENERAL",
+      "name": "GESTIÓN Y EMPRENDIMIENTO",
+      "components": "2/2/2",
+      "sum": 6,
+      "level": "L400-2",
+      "code": "CEAC005"
+    },
+    {
+      "col": 3,
+      "id": "IT&III",
+      "tipoMateria": "ITINERARIO",
+      "name": "ITINERARIO 3",
+      "components": "3/0/3",
+      "sum": 6,
+      "level": "L400-2",
+      "code": "IT&III"
+    },
+    {
+      "col": 4,
+      "id": "IT&IV",
+      "tipoMateria": "ITINERARIO",
+      "name": "ITINERARIO 4",
+      "components": "3/0/3",
+      "sum": 6,
+      "level": "L400-2",
+      "code": "IT&IV"
+    },
+    {
+      "col": 5,
+      "id": "TCON001",
+      "tipoMateria": "U DE INTEGRACIÓN CURRICULAR",
+      "name": "MIC - PI PROFESIONALIZANTE",
+      "components": "3/0/6",
+      "sum": 9,
+      "level": "L400-2",
+      "code": "TCON001"
+    },
+    {
+      "id": "TCON001-PROY",
+      "code": "TCON001-PROY",
+      "name": "PROYECTO INTEGRADOR",
+      "components": "0/0/15",
+      "sum": 15,
+      "level": "L400-2",
+      "col": 6,
+      "tipoMateria": "PROYECTO INTEGRADOR"
+    }
+  ],
+  "connections": [
+    {
+      "from": "CHUM001",
+      "to": "CHUM004"
+    },
+    {
+      "from": "SEGD002",
+      "to": "SEGD005"
+    },
+    {
+      "from": "SEGD003",
+      "to": "SEGD006"
+    },
+    {
+      "from": "SEGD005",
+      "to": "SEGD010"
+    },
+    {
+      "from": "SEGD006",
+      "to": "SEGD011"
+    },
+    {
+      "from": "SEGD006",
+      "to": "SEGD012"
+    },
+    {
+      "from": "SEGD005",
+      "to": "SEGD014"
+    },
+    {
+      "from": "CEAC001",
+      "to": "CEAC002"
+    },
+    {
+      "from": "SEGD005",
+      "to": "SEGD15"
+    },
+    {
+      "from": "SEGD011",
+      "to": "SEGD15"
+    },
+    {
+      "from": "SEGD006",
+      "to": "SEGD016"
+    },
+    {
+      "from": "SEGD012",
+      "to": "SEGD016"
+    },
+    {
+      "from": "SEGD013",
+      "to": "SEGD17"
+    },
+    {
+      "from": "SEGD014",
+      "to": "SEGD019"
+    },
+    {
+      "from": "SEGD009",
+      "to": "SEGD021"
+    },
+    {
+      "from": "SEGD17",
+      "to": "SEGD2023"
+    },
+    {
+      "from": "SEGD021",
+      "to": "SEGD0024"
+    },
+    {
+      "from": "SEGD0024",
+      "to": "SEGD029"
+    },
+    {
+      "from": "SEGD029",
+      "to": "SEGD033"
+    },
+    {
+      "from": "SEGD020",
+      "to": "SEGD034"
+    }
+  ]
+}
