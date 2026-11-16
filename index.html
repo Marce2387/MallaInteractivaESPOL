@@ -995,7 +995,7 @@
                 } else if (nameInput.includes('SOSTENIBILIDAD')) {
                     if (idx < 4) disabled = true;
                 } else if (tipo === 'PRÁCTICAS COMUNITARIAS') {
-                    if (idx < 5) disabled = true;
+                    if (idx < 4) disabled = true;
                 }
 
                 opt.disabled = disabled;
@@ -1082,7 +1082,7 @@
         } else if (fixType === 'fix_analisis_req') {
             state.connections = state.connections.filter(c => c.to !== id);
         } else if (fixType === 'move_comunitarias') {
-            moveSubjectToLevelHelper(subj, 'L300-2');
+            moveSubjectToLevelHelper(subj, 'L300-1');
         } else if (fixType === 'add_pi') {
             const cfg = state.config || initialData.config;
             const lastLvl = state.levels[cfg.semesters - 1].id;
@@ -2443,9 +2443,9 @@
       } else if ((subj.tipoMateria === 'C. DE ARTE Y DEPORTES' || subj.tipoMateria === 'C. DE HUMANÍSTICA') && subj.components !== '2/0/1') {
           fixAction = 'complementaria';
           warningMsg = 'Créditos incorrectos. Debe ser 2/0/1 (1 CR).';
-      } else if (subj.tipoMateria === 'PRÁCTICAS COMUNITARIAS' && currentLevelIdx < 5) {
+      } else if (subj.tipoMateria === 'PRÁCTICAS COMUNITARIAS' && currentLevelIdx < 4) {
           fixAction = 'move_comunitarias';
-          warningMsg = 'Debe cursarse desde el nivel 300-II en adelante.';
+          warningMsg = 'Debe cursarse desde el nivel 300-I en adelante.';
       } else if (["PRÁCTICAS COMUNITARIAS", "PRÁCTICAS LABORALES"].includes(subj.tipoMateria)) {
           const hours = parseHoursComponents(subj.components);
           if (hours.acd > 0 || hours.ape > 0 || !["0/0/3", "0/0/6", "0/0/9", "0/0/12", "0/0/15"].includes(subj.components)) {
@@ -2613,8 +2613,8 @@
               if (upperName.includes('SOSTENIBILIDAD') && targetLvlIdx < 4) {
                   showToast('SOSTENIBILIDAD debe ir en 300-I o superior.', 'error'); return;
               }
-              if (subject.tipoMateria === 'PRÁCTICAS COMUNITARIAS' && targetLvlIdx < 5) {
-                  showToast('PRÁCTICAS COMUNITARIAS deben ir en 300-II o superior.', 'error'); return;
+              if (subject.tipoMateria === 'PRÁCTICAS COMUNITARIAS' && targetLvlIdx < 4) {
+                  showToast('PRÁCTICAS COMUNITARIAS deben ir en 300-I o superior.', 'error'); return;
               }
 
               if (targetSubj && targetSubj.id !== data.id) {
