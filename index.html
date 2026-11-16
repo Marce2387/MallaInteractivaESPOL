@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Curricular Interactiva - ESPOL</title>
+  <title>Malla Curricular Interactiva - ESPE</title>
 
   <!-- AGREGADO: Favicon -->
-  <link rel="icon" href="./favicon.png" type="image/png">
+  <link rel="icon" href="./logo-espe.png" type="image/png">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -44,6 +44,11 @@
       flex-direction: column;
       overflow: hidden;
     }
+
+    .app-brand { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
+    .app-brand img { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+    .app-brand h1 { margin: 0; }
+    @media (max-width: 600px) { .app-brand img { width: 48px; height: 48px; } .app-brand h1 { font-size: 1.3rem; text-align: left; } }
 
     /* --- ENCABEZADO FIJO --- */
     .sticky-header {
@@ -512,7 +517,7 @@
 
   <!-- ENCABEZADO FIJO -->
   <div class="sticky-header">
-    <h1>Malla Curricular Interactiva - ESPOL</h1>
+    <div class="app-brand"><img src="./logo-espe.png" alt="Escudo de la Universidad de las Fuerzas Armadas ESPE" width="64" height="64"><h1>Malla Curricular Interactiva - ESPE</h1></div>
     <div class="subtitle" id="subtitle-container">
       Malla actual: 
       <span class="dropdown" style="display:inline-block;">
@@ -1473,7 +1478,7 @@
     async function loadCatalogo() {
       const container = document.getElementById('dropdown-json');
       try {
-        const response = await fetch('./catalogo.json');
+        const response = await fetch('./catalogo.json', { cache: 'no-cache' });
         if (!response.ok) throw new Error('Catálogo no encontrado');
         catalogoGlobal = await response.json();
         renderMenuFacultades();
