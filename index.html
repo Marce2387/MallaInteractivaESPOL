@@ -1051,7 +1051,7 @@
             subj.components = '1/1/1';
             subj.sum = 3;
         } else if (fixType === 'itinerario') {
-            subj.components = '3/0/3';
+            subj.components = '2/2/2';
             subj.sum = 6;
         } else if (fixType === 'complementaria') {
             subj.components = '2/0/1';
@@ -1446,6 +1446,10 @@
       const removed = new Set(data.subjects.filter(s => s.tipoMateria === 'PROYECTO INTEGRADOR').map(s => s.id));
       data.subjects = data.subjects.filter(s => !removed.has(s.id));
       data.subjects.forEach(s => {
+        if (s.tipoMateria === 'ITINERARIO') {
+          s.components = '2/2/2';
+          s.sum = 6;
+        }
         if (s.tipoMateria === 'U DE INTEGRACIÓN CURRICULAR') {
           s.components = '5/5/5';
           s.sum = 15;
@@ -2034,7 +2038,7 @@
             
             document.getElementById('btn-save').style.display = 'none'; // Oculta el botón Guardar
         } else if (tipo === 'ITINERARIO') {
-            compSelect.value = '3/0/3'; compSelect.disabled = true; codeGroup.style.display = 'none';
+            compSelect.value = '2/2/2'; compSelect.disabled = true; codeGroup.style.display = 'none';
             if (!fromInit || nameInput.value.trim() === '') { nameInput.value = 'ITINERARIO'; }
         } else if (tipo === 'C. DE ARTE Y DEPORTES' || tipo === 'C. DE HUMANÍSTICA') {
             compSelect.value = '2/0/1'; compSelect.disabled = true; codeGroup.style.display = 'none';
@@ -2428,9 +2432,9 @@
       } else if (upperName.match(/INGL[EÉ]S\s*(4|IV|5|V)\b/) && subj.components !== '1/1/1') {
           fixAction = 'ingles';
           warningMsg = 'Créditos incorrectos. Debe ser 1/1/1 (1 CR).';
-      } else if (subj.tipoMateria === 'ITINERARIO' && subj.components !== '3/0/3') {
+      } else if (subj.tipoMateria === 'ITINERARIO' && subj.components !== '2/2/2') {
           fixAction = 'itinerario';
-          warningMsg = 'Créditos incorrectos. Debe ser 3/0/3 (2 CR).';
+          warningMsg = 'Créditos incorrectos. Debe ser 2/2/2 (2 CR).';
       } else if ((subj.tipoMateria === 'C. DE ARTE Y DEPORTES' || subj.tipoMateria === 'C. DE HUMANÍSTICA') && subj.components !== '2/0/1') {
           fixAction = 'complementaria';
           warningMsg = 'Créditos incorrectos. Debe ser 2/0/1 (1 CR).';

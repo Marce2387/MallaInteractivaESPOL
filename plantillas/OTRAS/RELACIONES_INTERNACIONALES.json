@@ -481,7 +481,7 @@
       "id": "IT&I",
       "tipoMateria": "ITINERARIO",
       "name": "ITINERARIO 1",
-      "components": "3/0/3",
+      "components": "2/2/2",
       "sum": 6,
       "level": "L400-1",
       "code": "IT&I"
@@ -491,7 +491,7 @@
       "id": "IT&II",
       "tipoMateria": "ITINERARIO",
       "name": "ITINERARIO 2",
-      "components": "3/0/3",
+      "components": "2/2/2",
       "sum": 6,
       "level": "L400-1",
       "code": "IT&II"
@@ -531,7 +531,7 @@
       "id": "IT&III",
       "tipoMateria": "ITINERARIO",
       "name": "ITINERARIO 3",
-      "components": "3/0/3",
+      "components": "2/2/2",
       "sum": 6,
       "level": "L400-2",
       "code": "IT&III"
@@ -541,7 +541,7 @@
       "id": "IT&IV",
       "tipoMateria": "ITINERARIO",
       "name": "ITINERARIO 4",
-      "components": "3/0/3",
+      "components": "2/2/2",
       "sum": 6,
       "level": "L400-2",
       "code": "IT&IV"
