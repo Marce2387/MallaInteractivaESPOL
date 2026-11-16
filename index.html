@@ -471,7 +471,7 @@
           <div class="stat-box"><b id="stat-ape">0</b><span>Práctico experimental</span></div>
           <div class="stat-box"><b id="stat-aa">0</b><span>Aprendizaje autónomo</span></div>
        </div>
-       <p class="panel-note" style="margin-top: 12px;">Estos tres últimos totales incluyen únicamente asignaturas regulares asignadas a semestres activos. Excluyen Prácticas de Servicio Comunitario, Prácticas Laborales y el Proyecto Integrador.</p>
+       <p class="panel-note" style="margin-top: 12px;">Estos tres últimos totales incluyen únicamente asignaturas regulares asignadas a semestres activos. Excluyen Prácticas de Servicio Comunitario y Prácticas Laborales.</p>
     </div>
 
     <!-- Configuración -->
@@ -714,7 +714,6 @@
           <option value="PRÁCTICAS COMUNITARIAS">PRÁCTICAS DE SERVICIO COMUNITARIO</option>
           <option value="PRÁCTICAS LABORALES">PRÁCTICAS LABORALES</option>
           <option value="U DE INTEGRACIÓN CURRICULAR">UNIDAD DE INTEGRACIÓN CURRICULAR</option>
-          <option value="PROYECTO INTEGRADOR" style="display:none;">PROYECTO INTEGRADOR</option>
         </select>
       </div>
       
@@ -757,6 +756,7 @@
           <option value="4/1/7">4 Créditos - (4 ACD / 1 APE / 7 AA)</option>
           <option value="5/0/7">4 Créditos - (5 ACD / 0 APE / 7 AA)</option>
           <option value="0/0/12">4 Créditos - (0 ACD / 0 APE / 12 AA)</option>
+          <option value="5/5/5">5 Créditos - (5 ACD / 5 APE / 5 AA)</option>
           <option value="0/0/15">5 Créditos - (0 ACD / 0 APE / 15 AA)</option>
         </select>
       </div>
@@ -780,7 +780,7 @@
 
       <!-- Mensaje Dinámico de Integración -->
       <div class="form-group" id="group-integracion-msg" style="display:none; font-size: 0.8em; color: #0369a1; background: #e0f2fe; padding: 10px; border-radius: 6px; border: 1px solid #bae6fd;">
-          💡 Se creará la materia principal (3/0/6) y automáticamente se agregará la tarjeta de "Proyecto Integrador" (240h) en este mismo nivel si no existe.
+          💡 La Unidad de Integración Curricular consta de una sola asignatura: 5 ACD / 5 APE / 5 AA (5 créditos).
       </div>
 
       <!-- Mensaje Dinámico de Comunitaria -->
@@ -873,7 +873,7 @@
     };
 
     const niceSemesterNames = ['SEMESTRE I', 'SEMESTRE II', 'SEMESTRE III', 'SEMESTRE IV', 'SEMESTRE V', 'SEMESTRE VI', 'SEMESTRE VII', 'SEMESTRE VIII', 'SEMESTRE IX'];
-    const allowedCombinations = ["1/1/1", "2/0/1", "4/0/2", "2/0/4", "2/1/3", "2/2/2", "3/1/2", "3/0/3", "3/0/6", "0/0/6", "3/1/5", "3/2/4", "3/3/3", "4/0/5", "4/1/4", "0/0/9", "4/0/8", "4/1/7", "5/0/7", "0/0/15", "0/0/3", "0/0/12"];
+    const allowedCombinations = ["1/1/1", "2/0/1", "4/0/2", "2/0/4", "2/1/3", "2/2/2", "3/1/2", "3/0/3", "3/0/6", "0/0/6", "3/1/5", "3/2/4", "3/3/3", "4/0/5", "4/1/4", "0/0/9", "4/0/8", "4/1/7", "5/0/7", "0/0/15", "0/0/3", "0/0/12", "5/5/5"];
 
     function isValidCombination(compStr) {
       if (!compStr) return false;
@@ -1016,24 +1016,6 @@
         });
     };
 
-    window.autoCompletePI = function(levelId) {
-        const integradora = state.subjects.find(s => s.tipoMateria === 'U DE INTEGRACIÓN CURRICULAR');
-        if (!integradora) return;
-
-        const usedCols = state.subjects.filter(s => s.level === levelId).map(s => s.col);
-        if (usedCols.length >= NUM_COLUMNS) {
-            showToast('No hay espacio en el último nivel para el Proyecto Integrador. Libera un hueco.', 'error');
-            return;
-        }
-        let freeCol = 0; for (let i = 0; i < NUM_COLUMNS; i++) { if (!usedCols.includes(i)) { freeCol = i; break; } } 
-        
-        const piCode = integradora.code + "-PROY";
-        state.subjects.push({ id: piCode, code: piCode, name: "PROYECTO INTEGRADOR", components: '0/0/15', sum: 15, level: levelId, col: freeCol, tipoMateria: 'PROYECTO INTEGRADOR' });
-        
-        persistState(); renderBoard(); setTimeout(drawConnections, 200); updateAnalyticsPanel();
-        showToast('Proyecto Integrador auto-completado.', 'success');
-    }
-
     function moveSubjectToLevelHelper(subj, targetLevelId) {
         const usedCols = state.subjects.filter(s => s.level === targetLevelId && s.id !== subj.id).map(s => s.col);
         if (usedCols.length >= NUM_COLUMNS) {
@@ -1088,11 +1070,6 @@
             state.connections = state.connections.filter(c => c.to !== id);
         } else if (fixType === 'move_comunitarias') {
             moveSubjectToLevelHelper(subj, 'L300-1');
-        } else if (fixType === 'add_pi') {
-            const cfg = state.config || initialData.config;
-            const lastLvl = state.levels[cfg.semesters - 1].id;
-            window.autoCompletePI(lastLvl);
-            return; 
         } else if (fixType === 'fix_practicas_format') {
             if (subj.tipoMateria === 'PRÁCTICAS COMUNITARIAS') {
                 subj.components = '0/0/6'; subj.sum = 6;
@@ -1257,20 +1234,13 @@
            let iconHtml = '';
            if(idx === cfg.semesters - 1) {
                const hasMateriaInt = subjs.some(s => s.tipoMateria === 'U DE INTEGRACIÓN CURRICULAR');
-               const hasProjInt = subjs.some(s => s.tipoMateria === 'PROYECTO INTEGRADOR');
 
                if (lvlCreds > 15) {
                    hasWarnings = true;
                    iconHtml = `<div class="status-icon status-warn" title="Excede el límite máximo de 15 créditos para el último nivel">⚠️</div>`;
-               } else if (hasMateriaInt && hasProjInt) {
+               } else if (hasMateriaInt) {
                    iconHtml = `<div class="status-icon status-star" title="Último Nivel (Dentro del límite de 15 créditos)">⭐</div>`;
-               } else if (!hasMateriaInt && !hasProjInt) {
-                   hasWarnings = true;
-                   iconHtml = `<div class="status-icon status-warn" title="Falta Materia Integradora y Proyecto">⚠️</div>`;
-               } else if (hasMateriaInt && !hasProjInt) {
-                   hasWarnings = true;
-                   iconHtml = `<div class="status-icon status-warn" title="Falta Proyecto Integrador">⚠️</div> <button class="btn-autocomplete" onclick="autoCompletePI('${lvl.id}')">Autocompletar</button>`;
-               } else if (!hasMateriaInt && hasProjInt) {
+               } else {
                    hasWarnings = true;
                    iconHtml = `<div class="status-icon status-warn" title="Falta Unidad de Integración Curricular">⚠️</div>`;
                }
@@ -1470,7 +1440,24 @@
       setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 3500);
     }
 
+    // Actualiza también mallas importadas y sesiones guardadas con el formato anterior.
+    function normalizeCurricularIntegration(data) {
+      if (!Array.isArray(data.subjects)) return;
+      const removed = new Set(data.subjects.filter(s => s.tipoMateria === 'PROYECTO INTEGRADOR').map(s => s.id));
+      data.subjects = data.subjects.filter(s => !removed.has(s.id));
+      data.subjects.forEach(s => {
+        if (s.tipoMateria === 'U DE INTEGRACIÓN CURRICULAR') {
+          s.components = '5/5/5';
+          s.sum = 15;
+        }
+      });
+      if (Array.isArray(data.connections)) {
+        data.connections = data.connections.filter(c => !removed.has(c.from) && !removed.has(c.to));
+      }
+    }
+
     function persistState() {
+      normalizeCurricularIntegration(state);
       const fullSave = { stateData: state, linePreference: lineType };
       localStorage.setItem('malla_espol_autosave', JSON.stringify(fullSave));
     }
@@ -2062,7 +2049,7 @@
             } else { nameInput.value = 'PRÁCTICAS LABORALES'; splitGroup.style.display = 'block'; handleSplitChange(); }
             compSelect.value = '0/0/15'; compGroup.style.display = 'none'; sumGroup.style.display = 'none'; nameInput.disabled = true; codeGroup.style.display = 'none';
         } else if (tipo === 'U DE INTEGRACIÓN CURRICULAR') {
-            compSelect.value = '3/0/6'; compSelect.disabled = true; levelSelect.value = lastLevelId; levelSelect.disabled = true; msgInt.style.display = 'block';
+            compSelect.value = '5/5/5'; compSelect.disabled = true; levelSelect.value = lastLevelId; levelSelect.disabled = true; msgInt.style.display = 'block';
         }
 
         updateSumFromSelect(); updateLevelOptions();
@@ -2183,9 +2170,7 @@
 
             if (isNewSubj) state.subjects.push(subj);
 
-            if (tipo === 'U DE INTEGRACIÓN CURRICULAR' && isNewSubj) {
-                 setTimeout(() => window.autoCompletePI(level), 100);
-            }
+
         }
 
         persistState();
@@ -2302,6 +2287,7 @@
     }
 
     function renderBoard() {
+      normalizeCurricularIntegration(state);
       const board = document.getElementById('board'); board.innerHTML = '';
       if(!state.config) state.config = JSON.parse(JSON.stringify(initialData.config));
       if(!state.levels || !Array.isArray(state.levels) || state.levels.length === 0) state.levels = JSON.parse(JSON.stringify(initialData.levels));
@@ -2457,12 +2443,7 @@
                fixAction = 'fix_practicas_format';
                warningMsg = 'Formato de horas inválido.';
           }
-      } else if (subj.tipoMateria === 'U DE INTEGRACIÓN CURRICULAR') {
-           const hasPi = state.subjects.some(s => s.tipoMateria === 'PROYECTO INTEGRADOR');
-           if (!hasPi) {
-               fixAction = 'add_pi';
-               warningMsg = 'Falta generar el Proyecto Integrador correspondiente.';
-           }
+
       }
       
       // --- REGLA: Componentes de Ciencias Básicas y Especiales ---

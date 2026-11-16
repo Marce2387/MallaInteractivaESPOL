@@ -551,20 +551,10 @@
       "id": "TCON001",
       "tipoMateria": "U DE INTEGRACIÓN CURRICULAR",
       "name": "MIC - PI PROFESIONALIZANTE",
-      "components": "3/0/6",
-      "sum": 9,
-      "level": "L400-2",
-      "code": "TCON001"
-    },
-    {
-      "id": "TCON001-PROY",
-      "code": "TCON001-PROY",
-      "name": "PROYECTO INTEGRADOR",
-      "components": "0/0/15",
+      "components": "5/5/5",
       "sum": 15,
       "level": "L400-2",
-      "col": 6,
-      "tipoMateria": "PROYECTO INTEGRADOR"
+      "code": "TCON001"
     }
   ],
   "connections": [
