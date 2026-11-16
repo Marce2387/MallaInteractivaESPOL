@@ -738,6 +738,7 @@
           <option value="1/1/1">1 Crédito - (1 ACD / 1 APE / 1 AA)</option>
           <option value="2/0/1">1 Crédito - (2 ACD / 0 APE / 1 AA)</option>
           <option value="4/0/2">2 Créditos - (4 ACD / 0 APE / 2 AA)</option>
+          <option value="1/1/4">2 Créditos - (1 ACD / 1 APE / 4 AA)</option>
           <option value="2/0/4">2 Créditos - (2 ACD / 0 APE / 4 AA)</option>
           <option value="2/1/3">2 Créditos - (2 ACD / 1 APE / 3 AA)</option>
           <option value="2/2/2">2 Créditos - (2 ACD / 2 APE / 2 AA)</option>
@@ -873,7 +874,7 @@
     };
 
     const niceSemesterNames = ['SEMESTRE I', 'SEMESTRE II', 'SEMESTRE III', 'SEMESTRE IV', 'SEMESTRE V', 'SEMESTRE VI', 'SEMESTRE VII', 'SEMESTRE VIII', 'SEMESTRE IX'];
-    const allowedCombinations = ["1/1/1", "2/0/1", "4/0/2", "2/0/4", "2/1/3", "2/2/2", "3/1/2", "3/0/3", "3/0/6", "0/0/6", "3/1/5", "3/2/4", "3/3/3", "4/0/5", "4/1/4", "0/0/9", "4/0/8", "4/1/7", "5/0/7", "0/0/15", "0/0/3", "0/0/12", "5/5/5"];
+    const allowedCombinations = ["1/1/1","2/0/1","4/0/2","2/0/4","2/1/3","2/2/2","3/1/2","3/0/3","3/0/6","0/0/6","3/1/5","3/2/4","3/3/3","4/0/5","4/1/4","0/0/9","4/0/8","4/1/7","5/0/7","0/0/15","0/0/3","0/0/12","5/5/5","1/1/4"];
 
     function isValidCombination(compStr) {
       if (!compStr) return false;
