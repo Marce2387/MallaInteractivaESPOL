@@ -722,6 +722,10 @@
         <input type="text" id="edit-name" placeholder="Ej: CÁLCULO VECTORIAL & 3" oninput="updateLevelOptions()">
       </div>
 
+      <div id="group-itinerary-options" style="display:none;">
+        <div class="form-group"><label for="edit-itinerary-option-1">Opción de curso 1:</label><input id="edit-itinerary-option-1" type="text" maxlength="200" placeholder="Nombre del primer curso"></div>
+        <div class="form-group"><label for="edit-itinerary-option-2">Opción de curso 2:</label><input id="edit-itinerary-option-2" type="text" maxlength="200" placeholder="Nombre del segundo curso"></div>
+      </div>
       <div class="form-group" id="group-code">
         <label style="display:flex; justify-content:space-between; align-items:center;">
           Código:
@@ -1922,6 +1926,8 @@
         document.getElementById('modal-title').innerText = 'Agregar Nueva Materia';
         document.getElementById('edit-tipo-materia').value = 'FORMACIÓN PROFESIONAL';
         document.getElementById('edit-name').value = '';
+        document.getElementById('edit-itinerary-option-1').value = '';
+        document.getElementById('edit-itinerary-option-2').value = '';
         document.getElementById('edit-is-new').checked = false;
         document.getElementById('edit-code').value = '';
         document.getElementById('edit-components').value = '3/1/5';
@@ -1940,6 +1946,8 @@
         document.getElementById('modal-title').innerText = 'Editar Materia';
         document.getElementById('edit-tipo-materia').value = subj.tipoMateria || 'FORMACIÓN PROFESIONAL';
         document.getElementById('edit-name').value = subj.name;
+        document.getElementById('edit-itinerary-option-1').value = subj.courseOptions?.[0] || '';
+        document.getElementById('edit-itinerary-option-2').value = subj.courseOptions?.[1] || '';
         
         const isNew = String(subj.code).toUpperCase().startsWith('NUEVO-');
         document.getElementById('edit-is-new').checked = isNew;
@@ -1966,6 +1974,7 @@
 
     function handleTipoChange(isInit = false) {
         const fromInit = isInit === true; const tipo = document.getElementById('edit-tipo-materia').value;
+        document.getElementById('group-itinerary-options').style.display = tipo === 'ITINERARIO' ? 'block' : 'none';
         const compGroup = document.getElementById('group-components'); const compSelect = document.getElementById('edit-components');
         const splitGroup = document.getElementById('group-laborales-split'); const lvl2Group = document.getElementById('level-select-group-2');
         const msgInt = document.getElementById('group-integracion-msg'); const msgCom = document.getElementById('group-comunitaria-msg');
@@ -2076,6 +2085,11 @@
     }
 
     function saveSubjectFromModal() {
+        const courseOptions = [1, 2].map(n => document.getElementById('edit-itinerary-option-' + n).value.trim());
+        if (document.getElementById('edit-tipo-materia').value === 'ITINERARIO' && courseOptions.some(option => !option)) {
+            showToast('Ingresa las dos opciones de cursos del itinerario.', 'error');
+            return;
+        }
         const id = document.getElementById('edit-id').value;
         const tipo = document.getElementById('edit-tipo-materia').value;
         const name = document.getElementById('edit-name').value.trim().toUpperCase();
@@ -2160,6 +2174,8 @@
             }
 
             subj.tipoMateria = tipo;
+            if (tipo === 'ITINERARIO') subj.courseOptions = courseOptions;
+            else delete subj.courseOptions;
             subj.name = name || tipo; 
             subj.components = components;
             subj.sum = sum;
@@ -2378,6 +2394,39 @@
       if(optL500_2) optL500_2.style.display = state.config.semesters === 9 ? 'block' : 'none';
     }
 
+    function showItineraryOptions(id) {
+      const subject = state.subjects.find(s => s.id === id);
+      if (!subject) return;
+      let dialog = document.getElementById('itinerary-options-dialog');
+      if (!dialog) {
+        dialog = document.createElement('dialog');
+        dialog.id = 'itinerary-options-dialog';
+        dialog.style.cssText = 'border:1px solid #cbd5e1;border-radius:14px;padding:24px;max-width:440px;width:calc(100% - 64px);color:#334155;';
+        document.body.appendChild(dialog);
+      }
+      dialog.replaceChildren();
+      const heading = document.createElement('h2');
+      heading.textContent = subject.name;
+      dialog.appendChild(heading);
+      const list = document.createElement('ol');
+      for (let i = 0; i < 2; i++) {
+        const item = document.createElement('li');
+        item.textContent = subject.courseOptions?.[i] || 'Opción de curso pendiente de definir';
+        item.style.cssText = 'margin:12px 0;overflow-wrap:anywhere;';
+        list.appendChild(item);
+      }
+      dialog.appendChild(list);
+      const edit = document.createElement('button');
+      edit.textContent = 'Editar opciones';
+      edit.onclick = () => { dialog.close(); openModalForEdit(null, id); };
+      const close = document.createElement('button');
+      close.textContent = 'Cerrar';
+      close.style.marginLeft = '8px';
+      close.onclick = () => dialog.close();
+      dialog.append(edit, close);
+      dialog.showModal();
+    }
+
     function createSubjectCard(subj) {
       const card = document.createElement('div'); const isPinned = (pinnedSubjectId === subj.id);
       const tipoClase = getTypeClass(subj.tipoMateria);
@@ -2539,7 +2588,7 @@
           window.dragAction = 'move'; window.draggedId = subj.id;
           e.dataTransfer.setData('text/plain', JSON.stringify({ action: 'move', id: subj.id })); 
       };
-      card.onclick = (e) => { e.stopPropagation(); handleCardClick(subj.id); };
+      card.onclick = (e) => { e.stopPropagation(); handleCardClick(subj.id); if (subj.tipoMateria === 'ITINERARIO') showItineraryOptions(subj.id); };
       card.onmouseenter = () => { if (!pinnedSubjectId) highlightConnections(subj.id); };
       card.onmouseleave = () => { if (!pinnedSubjectId) clearHighlights(); };
       return card;
